@@ -34,7 +34,7 @@ const Signup = () => {
 
   return (
     <div className='flex flex-col items-center justify-center min-w-96 mx-auto' >
-      <div className='w-full p-6 rounded-lg shadow-md bg-white-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+      <div className='w-full p-6 rounded-lg shadow-md bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 '>
 
         <h1 className='text-3xl font-semibold text-center text-gray-300'>
           Signup
@@ -44,7 +44,7 @@ const Signup = () => {
         <form onSubmit={handleSubmit} action="">
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>FullName</span>
+              <span className='text-base label-text  text-white'>FullName</span>
             </label>
 
             <input
@@ -59,7 +59,7 @@ const Signup = () => {
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Username</span>
+              <span className='text-base label-text  text-white'>Username</span>
             </label>
 
             <input
@@ -74,7 +74,7 @@ const Signup = () => {
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Password</span>
+              <span className='text-base label-text  text-white'>Password</span>
             </label>
 
             <input
@@ -89,7 +89,7 @@ const Signup = () => {
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Confirm Password</span>
+              <span className='text-base label-text  text-white'>Confirm Password</span>
             </label>
 
             <input

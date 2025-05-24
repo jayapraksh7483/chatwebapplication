@@ -11,21 +11,22 @@ const GenderCheckBox = ({ onCheckboxChange, selectedGender }) => {
           value="male"
           checked={selectedGender === "male"}
           onChange={onCheckboxChange}
-          className='checkbox border-slate-900'
+          className='checkbox '
         />
-        <span className='label-text'>Male</span>
+        <span className='label-text text-white'>Male</span>
       </label>
 
-      <label className={`label gap-2 cursor-pointer ${selectedGender === "female" ? "selected" : ""}`}>
+      <label className={`label gap-2 cursor-pointer  ${selectedGender === "female" ? "selected" : ""}`}>
         <input
+          
           type="radio"
           name="gender"
           value="female"
           checked={selectedGender === "female"}
           onChange={onCheckboxChange}
-          className='checkbox border-slate-900'
+          className='checkbox '
         />
-        <span className='label-text'>Female</span>
+        <span className='label-text text-white'>Female</span>
       </label>
 
     </div>

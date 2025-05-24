@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
 
   return (
    <div className="flex flex-col items-center justify-center min-w-96 mx-auto min-h-screen">
-  <div className="w-full p-6 shadow-md bg-white/5 backdrop-blur-sm">
+  <div className="w-full p-6 rounded-lg shadow-md bg-gray-900 backdrop-blur-lg">
       
      <h1  className='text-3xl font-semibold text-center text-gray-300'>
       Login
@@ -29,10 +29,10 @@ const handleSubmit = async (e) => {
      <form onSubmit={handleSubmit} action="">
       <div>
         <label className='label p-2'>
-          <span className='text-base label-text'>Username</span>
+          <span className='text-base label-text text-white'>Username</span>
         </label>
 
-        <input type="text" placeholder="Type here" className='input input-bordered w-full h-10' 
+        <input type="text" placeholder="enter the username" className='input input-bordered w-full h-10' 
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         />  
@@ -43,10 +43,10 @@ const handleSubmit = async (e) => {
 
       <div>
         <label className='label p-2'>
-          <span className='text-base label-text'>Password</span>
+          <span className='text-base label-text text-white'>Password</span>
         </label>
 
-        <input type="password" placeholder="Type here" className='input input-bordered w-full h-10'
+        <input type="password" placeholder="enter the password" className='input input-bordered w-full h-10'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         />
