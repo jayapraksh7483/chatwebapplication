@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchInput from './SearchInput'
-import Conservations from './Conservations'
+import Conservations from './Conversations'
 import LogoutButton from './LogoutButton'
 
 
