@@ -12,11 +12,12 @@ import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 
+const allowedOrigins = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:5173'];
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://chatwebapplication-5.onrender.com'],
+  origin: allowedOrigins,
   credentials: true,
 }));
-
 
 const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
