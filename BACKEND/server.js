@@ -31,15 +31,13 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 // Build asset folder
-const frontDistPath = path.join(__dirname, "FRONTEND", "dist");
-
-// Serve React app static files
-app.use(express.static(frontDistPath));
-
-// On any other route, send the React index.html
+const frontDist = path.join(__dirname, "../FRONTEND/dist");
+app.use(express.static(frontDist));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(frontDistPath, "index.html"));
+  res.sendFile(path.join(frontDist, "index.html"));
 });
+
+ 
 server.listen(PORT, () => {
 	connectToMongoDB();
 	console.log(`Server Running on port ${PORT}`);
