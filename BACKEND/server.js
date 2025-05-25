@@ -17,7 +17,7 @@ dotenv.config();
 
 const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
-const PORT = process.env.PORT || 5000;
+ 
 
 app.use(cors({
   origin: [
@@ -41,6 +41,8 @@ app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
+
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
 	connectToMongoDB();
 	console.log(`Server Running on port ${PORT}`);
