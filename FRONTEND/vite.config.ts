@@ -15,7 +15,6 @@ export default defineConfig({
     },
   },
   preview: {
-    port: 4173,
     allowedHosts: ['chatwebapplication-5.onrender.com'], // Add your backend host here
   },
 });

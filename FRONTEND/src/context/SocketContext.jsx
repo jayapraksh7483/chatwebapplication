@@ -21,8 +21,9 @@ export const SocketContextProvider = ({ children }) => {
       const {authUser} = useAuthContext();
 
     useEffect(() => {
+         const BACKEND_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
         if(authUser){
-            const socket = io("http://localhost:5000",{
+            const socket = io(BACKEND_URL,{
                query:{
                     userId: authUser._id
                 }   

@@ -12,7 +12,8 @@ const useGetMessages = () => {
     const getMessages = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/messages/${selectedConversation._id}`)          
+        const API_BASE_URL = import.meta.env.VITE_API_URL;
+        const response = await fetch(`${API_BASE_URL}/api/messages/${selectedConversation._id}`)          
 
         const data = await response.json();
  
