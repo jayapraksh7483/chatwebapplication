@@ -17,7 +17,9 @@ const UseLogin = () => {
 
       
       const API_BASE_URL = import.meta.env.VITE_API_URL;
-      console.log('API URL:', import.meta.env.VITE_API_URL);
+      
+      console.log("🔍 import.meta.env:", import.meta.env);
+console.log("🔍 VITE_API_URL:", import.meta.env.VITE_API_URL);
       const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
  
