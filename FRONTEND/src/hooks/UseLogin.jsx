@@ -7,13 +7,14 @@ const UseLogin = () => {
   const { setAuthUser } = useAuthContext();
 
   const login = async (username, password) => {
+            const API_BASE_URL = import.meta.env.VITE_API_URL
     const success = handleLoginInputErrors({ username, password });
     if (!success) return false;
 
     setLoading(true);
 
     try {
-      const res = await fetch("https://chatwebapplication-5.onrender.com/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
  
         headers: {

@@ -10,9 +10,11 @@ const useGetMessages = () => {
 
   useEffect(() => {
     const getMessages = async () => {
+              const API_BASE_URL = import.meta.env.VITE_API_URL
       setLoading(true);
+
       try {
-        const response = await fetch(`https://chatwebapplication-5.onrender.com/api/messages/${selectedConversation._id}`)          
+        const response = await fetch(`${API_BASE_URL}/api/messages/${selectedConversation._id}`)          
 
         const data = await response.json();
  

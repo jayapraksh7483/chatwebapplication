@@ -21,12 +21,13 @@ export const SocketContextProvider = ({ children }) => {
       const {authUser} = useAuthContext();
 
     useEffect(() => {
-        if(authUser){
-            const socket = io("https://chatwebapplication-5.onrender.com",{
+        if(authUser){ const socket = io(import.meta.env.VITE_API_URL,{
+               withCredentials: true,
                query:{
                     userId: authUser._id
                 }   
 
+           
 
             });
 
