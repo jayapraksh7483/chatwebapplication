@@ -2,6 +2,7 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import authRoutes from "./routes/authroute.js";
 import messageRoutes from "./routes/messageroutes.js";
@@ -17,6 +18,14 @@ dotenv.config();
 const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
 const PORT = process.env.PORT || 5000;
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173",               // frontend local dev url
+       "https://chatwebapplication-5.onrender.com"   // deployed frontend url
+  ],
+  credentials: true
+}));
 
  
 
