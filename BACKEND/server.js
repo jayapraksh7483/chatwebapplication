@@ -30,13 +30,16 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+// Build asset folder
+const frontDistPath = path.join(__dirname, "FRONTEND", "dist");
 
-app.use(express.static(path.join(__dirname, "frontend")));
+// Serve React app static files
+app.use(express.static(frontDistPath));
 
+// On any other route, send the React index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "index.html"));
+  res.sendFile(path.join(frontDistPath, "index.html"));
 });
-
 server.listen(PORT, () => {
 	connectToMongoDB();
 	console.log(`Server Running on port ${PORT}`);
