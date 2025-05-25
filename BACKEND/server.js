@@ -11,11 +11,10 @@ import connectToMongoDB from "./db/connectdb.js";
 import { app, server } from "./socket/socket.js";
 
 dotenv.config();
-
-const allowedOrigins = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:5173'];
+ 
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: ['http://localhost:5173', 'https://chatwebapplication-5.onrender.com'],
   credentials: true,
 }));
 
