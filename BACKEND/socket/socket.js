@@ -9,7 +9,8 @@ const io = new Server(server, {
 	cors: {
 		origin: ["http://localhost:5173",
 
-			"https://chatwebapplication-5.onrender.com" 
+			"https://chatwebapplication-5.onrender.com" ,
+			"https://chattwweb.netlify.app"
 
 		],
 		methods: ["GET", "POST"],
