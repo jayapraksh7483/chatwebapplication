@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
@@ -7,13 +6,17 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      "/api": {
+      '/api': {
         target: 'http://localhost:5000',
-          changeOrigin: true,
+        changeOrigin: true,
         secure: false,
-         
-      }
+        ws: true,
+      },
     },
   },
-  
+  preview: {
+    port: 4173,
+    allowedHosts: ['chatwebapplication-5.onrender.com'], // Add your backend host here
+  },
 });
+
