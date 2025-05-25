@@ -13,7 +13,7 @@ const UseLogin = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch("https://chatwebapplication-5.onrender.com/api/auth/login", {
         method: "POST",
  
         headers: {

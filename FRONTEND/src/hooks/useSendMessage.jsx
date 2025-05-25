@@ -11,7 +11,7 @@ const useSendMessage = () => {
     const sendMessage = async (message) => {
         setLoading(true);
         try {
-            const response = await fetch(`/api/messages/send/${selectedConversation._id}`, {
+            const response = await fetch(`https://chatwebapplication-5.onrender.com/api/messages/send/${selectedConversation._id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

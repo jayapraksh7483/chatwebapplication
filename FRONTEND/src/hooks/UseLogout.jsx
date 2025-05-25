@@ -11,7 +11,7 @@ const UseLogout = () => {
     const logout = async () => {
         setLoading(true);
         try {
-             const res = await fetch("/api/auth/logout", {
+             const res = await fetch("https://chatwebapplication-5.onrender.com/api/auth/logout", {
                 method: "POST",
  
                 headers: {

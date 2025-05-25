@@ -12,7 +12,7 @@ const useGetMessages = () => {
     const getMessages = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/messages/${selectedConversation._id}`)          
+        const response = await fetch(`https://chatwebapplication-5.onrender.com/api/messages/${selectedConversation._id}`)          
 
         const data = await response.json();
  

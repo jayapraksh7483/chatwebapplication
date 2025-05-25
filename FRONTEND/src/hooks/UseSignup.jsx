@@ -15,7 +15,7 @@ const UseSignup = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch("https://chatwebapplication-5.onrender.com/api/auth/signup", {
         method: "POST",
  
         headers: {
