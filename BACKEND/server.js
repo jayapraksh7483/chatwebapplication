@@ -21,7 +21,7 @@ const __dirname = path.resolve();
  
 
 app.use(cors({
-  origin: ['http://localhost:5173',"https://chatwebapplication-5.onrender.com"],
+  origin: ['http://localhost:5173',"https://chatwebapplication-enbx.vercel.app"],
   credentials: true,
 }));
 
