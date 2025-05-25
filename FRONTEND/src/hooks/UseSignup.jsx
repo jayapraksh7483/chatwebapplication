@@ -9,15 +9,13 @@ const UseSignup = () => {
  
 
   const signup = async ({ fullname, username, password, confirmPassword, gender }) => {
-
-            const API_BASE_URL = import.meta.env.VITE_API_URL
     const success = handleInputErrors({ fullname, username, password, confirmPassword, gender });
     if (!success) return;
 
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
+      const res = await fetch("/api/auth/signup", {
         method: "POST",
  
         headers: {

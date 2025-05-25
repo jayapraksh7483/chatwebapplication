@@ -9,11 +9,9 @@ const UseLogout = () => {
     const { setAuthUser } = useAuthContext();
 
     const logout = async () => {
-                const API_BASE_URL = import.meta.env.VITE_API_URL
-        
         setLoading(true);
         try {
-             const res = await fetch( `${API_BASE_URL}/api/auth/logout`, {
+             const res = await fetch("/api/auth/logout", {
                 method: "POST",
  
                 headers: {

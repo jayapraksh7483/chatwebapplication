@@ -6,10 +6,9 @@ const useGetConversations = () => {
 
    useEffect(() => {
     const getConversations = async () => {
-              const API_BASE_URL = import.meta.env.VITE_API_URL
       setLoading(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/api/users`)
+        const response = await fetch('/api/users')
           
         const data = await response.json();
         setConversations(data);
