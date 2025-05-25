@@ -14,9 +14,5 @@ export default defineConfig({
       }
     },
   },
-  preview: {
-    port: 5000, // Render uses this port from env var $PORT, you can keep static or dynamic
-    host: true, // listen on all IPs
-    allowedHosts: ['chatwebapplication-5.onrender.com'], // Add your Render domain here
-  }
+  
 });
