@@ -2,15 +2,14 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
 
-export const AuthContextProvider = ({ children }) => {
-  const [authUser, setAuthUser] = useState(null);
+export const useAuthContext = () => {
+  useContext(AuthContext)
+};
 
-  useEffect(() => {
-    const user = localStorage.getItem("chat-user");
-    if (user) {
-      setAuthUser(JSON.parse(user));
-    }
-  }, []);
+export const AuthContextProvider = ({ children }) => {
+  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem("chat-user")) || null);
+
+ 
 
   return (
     <AuthContext.Provider value={{ authUser, setAuthUser }}>
@@ -19,4 +18,4 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 
-export const useAuthContext = () => useContext(AuthContext);
+ 
