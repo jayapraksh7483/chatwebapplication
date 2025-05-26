@@ -13,11 +13,7 @@ const useGetConversations = () => {
       setLoading(true);
       try {
         const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`
-        ,{
-          headers: {
-    Authorization: `Bearer ${token}`,
-  }
-        }
+        ,
         );
 
         if (!response.ok) {

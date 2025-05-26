@@ -13,9 +13,7 @@ const useGetMessages = () => {
       setLoading(true);
       try { 
         const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/messages/${selectedConversation._id}`,{
-          headers: {
-    Authorization: `Bearer ${token}`,
-  }
+          
         })          
 
         const data = await response.json();
