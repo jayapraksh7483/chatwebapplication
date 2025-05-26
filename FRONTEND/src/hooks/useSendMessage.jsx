@@ -6,6 +6,18 @@ const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useConversationStore();
 
+  
+    useEffect(() => {
+  if (!authUser) return; // Only fetch if logged in
+
+  // Extract token safely from authUser
+  const token = authUser.token || (authUser?.user?.token) || null;
+
+  if (!token) {
+    console.error("No token found in authUser");
+    return;
+  }})
+
   const sendMessage = async (message) => {
     if (!selectedConversation?._id) {
       toast.error("No conversation selected");
@@ -13,6 +25,9 @@ const useSendMessage = () => {
     }
     
     setLoading(true);
+ 
+
+    
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE_URL}/api/messages/send/${selectedConversation._id}`,

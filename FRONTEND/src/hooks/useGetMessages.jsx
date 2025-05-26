@@ -6,8 +6,18 @@ const useGetMessages = () => {
   const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useConversationStore();
 
-  useEffect(() => {
-    let isMounted = true;
+ 
+
+    useEffect(() => {
+    if (!authUser) return; // Only fetch if logged in
+
+    // Extract token from authUser - adjust depending on your authUser shape
+    const token = authUser.token || (authUser?.user?.token) || null;
+
+    if (!token) {
+      console.error("No token found in authUser");
+      return;
+    }
 
     const getMessages = async () => {
       setLoading(true);
