@@ -10,6 +10,7 @@ const io = new Server(server, {
 	cors: {
 		origin: [ " https://chatwebapplication-6.onrender.com"],
 		methods: ["GET", "POST"],
+		 credentials: true
 		 
 	},
 });

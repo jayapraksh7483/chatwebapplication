@@ -13,8 +13,7 @@ import { app, server } from "./socket/socket.js";
 dotenv.config();
  
  
-
-const cors = require('cors');
+ 
 app.use(cors({
   origin: 'https://chatwebapplication-6.onrender.com', // frontend origin
   credentials: true, // if cookies/auth headers are needed
