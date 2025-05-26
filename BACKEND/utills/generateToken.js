@@ -6,7 +6,7 @@ const generateTokenandSetCookie = (userId,res)=>{
 });
 res.cookie("jwt", token, {
   httpOnly: true,
-  secure: process.env.NODE_ENV !== "development", // ✅ use true in deployed site
+  secure: process.env.NODE_ENV === "production", // ✅ use true in deployed site
   sameSite: "None", // ✅ for cross-site cookies (e.g., Netlify + Render)
   maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
 });

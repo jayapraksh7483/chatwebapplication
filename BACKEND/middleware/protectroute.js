@@ -4,6 +4,8 @@ import User from '../models/usermodel.js';
     try {
           const token = req.cookies.jwt;
           console.log("JWT Cookie:", req.cookies.jwt);
+          console.log("Incoming cookies:", req.cookies);
+           console.log("JWT Token:", token);
 
            
             if (!token) {
