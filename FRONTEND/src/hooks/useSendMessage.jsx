@@ -11,8 +11,8 @@ const useSendMessage = () => {
     const sendMessage = async (message) => {
         setLoading(true);
         try {
-            const API_BASE_URL = import.meta.env.VITE_API_URL;
-            const response = await fetch(`${API_BASE_URL}/api/messages/send/${selectedConversation._id}`, {
+           
+            const response = await fetch(`/api/messages/send/${selectedConversation._id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -2,44 +2,42 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext.jsx";
 
-const UseLogin = () => {
+const useLogin = () => {
   const [loading, setLoading] = useState(false);
   const { setAuthUser } = useAuthContext();
 
   const login = async (username, password) => {
-    const success = handleLoginInputErrors({ username, password });
-    if (!success) return false;
+    // Validate input fields
+    const isValid = validateLoginInputs({ username, password });
+    if (!isValid) return false;
 
     setLoading(true);
 
     try {
-       
-
-      
-      const API_BASE_URL = import.meta.env.VITE_API_URL;
-      
-      console.log("🔍 import.meta.env:", import.meta.env);
-console.log("🔍 VITE_API_URL:", import.meta.env.VITE_API_URL);
-      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      const res = await fetch("/api/auth/login", {
         method: "POST",
- 
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }), 
-        credentials: 'include', // FIXED
+        body: JSON.stringify({ username, password }),
+        credentials: "include", // important if using cookies for auth
       });
 
       const data = await res.json();
+
       if (data.error) {
         throw new Error(data.error);
       }
 
+      // Save user to localStorage and context
       localStorage.setItem("chat-user", JSON.stringify(data));
       setAuthUser(data);
-      
+      toast.success("Login successful");
+
+      return true;
     } catch (error) {
       toast.error(error.message || "Login failed");
+      return false;
     } finally {
       setLoading(false);
     }
@@ -48,10 +46,10 @@ console.log("🔍 VITE_API_URL:", import.meta.env.VITE_API_URL);
   return { loading, login };
 };
 
-export default UseLogin;
+export default useLogin;
 
-// ✅ Fixed Login Error Handler
-function handleLoginInputErrors({ username, password }) {
+// ✅ Input validation function
+function validateLoginInputs({ username, password }) {
   if (!username || !password) {
     toast.error("Please fill all the fields");
     return false;
