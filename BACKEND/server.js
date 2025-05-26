@@ -25,7 +25,7 @@ app.use(express.json()); // to parse the incoming requests with JSON payloads (f
 app.use(cookieParser());
 
 app.use(cors({
-  origin: true, // frontend origin
+  origin: 'https://chatwebapplication-7.onrender.com', // frontend origin
   credentials: true, // if cookies/auth headers are needed
 }));
 
