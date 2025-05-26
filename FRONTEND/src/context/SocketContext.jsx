@@ -25,11 +25,11 @@ export const SocketContextProvider = ({ children }) => {
 
   if (authUser) {
     newSocket = io("https://chatwebapplication-7.onrender.com", {
-        withCredentials: true,
+        credentials: true,
       query: {
         userId: authUser._id,
       },
-      withCredentials: true, // important for cookies/auth if you're using them
+        Credentials: true, // important for cookies/auth if you're using them
       transports: ["websocket", "polling"], // avoid transport fallback issues
     });
 
