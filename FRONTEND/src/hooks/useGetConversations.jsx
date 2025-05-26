@@ -8,17 +8,12 @@ const useGetConversations = () => {
 
   useEffect(() => {
     const getConversations = async () => {
-      if (!authUser?.token) return;  // safeguard: don't fetch without token
+      
 
       setLoading(true);
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/api/users`,
-          {
-            headers: {
-              Authorization: `Bearer ${authUser.token}`, // send token in header
-            },
-          }
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`
+        
         );
 
         if (!response.ok) {
