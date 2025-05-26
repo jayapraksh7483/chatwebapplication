@@ -19,6 +19,7 @@ const useSendMessage = () => {
         {
           method: "POST",
           headers: {
+             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           credentials: "include",

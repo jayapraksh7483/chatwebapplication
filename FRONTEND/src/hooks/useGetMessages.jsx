@@ -16,6 +16,10 @@ const useGetMessages = () => {
           `${import.meta.env.VITE_API_BASE_URL}/api/messages/${selectedConversation._id}`,
           {
             method: "GET",
+             headers: {
+    "Authorization": `Bearer ${token}`,
+    "Content-Type": "application/json"
+  },
             credentials: "include",
           }
         );
