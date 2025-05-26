@@ -14,11 +14,7 @@ dotenv.config();
  
  
  
-app.use(cors({
-  origin: 'https://chatwebapplication-6.onrender.com', // frontend origin
-  credentials: true, // if cookies/auth headers are needed
-}));
-
+ 
  
 
 const __dirname = path.resolve();
@@ -27,6 +23,12 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser());
+
+app.use(cors({
+  origin: 'https://chatwebapplication-6.onrender.com', // frontend origin
+  credentials: true, // if cookies/auth headers are needed
+}));
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
