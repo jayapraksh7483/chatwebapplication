@@ -23,13 +23,22 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser());
+const allowedOrigins = [
+  'https://chatwebapplication-6.onrender.com',
+  'https://chatwebapplication-7.onrender.com',
+];
 
 app.use(cors({
-  origin: 'https://chatwebapplication-7.onrender.com', // frontend origin
-  credentials: true, // if cookies/auth headers are needed
+  origin: function(origin, callback){
+    if (!origin) return callback(null, true); // allow requests like Postman or server-to-server without origin
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
 }));
-
-
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
