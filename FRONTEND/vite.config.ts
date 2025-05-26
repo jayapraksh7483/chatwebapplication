@@ -15,7 +15,7 @@ export default defineConfig({
     },
   },
   preview: {
-    allowedHosts: ['chatwebapplication-5.onrender.com'], // Add your backend host here
+    allowedHosts: ['chatwebapplication-7.onrender.com'], // Add your backend host here
   },
 });
 
