@@ -7,14 +7,19 @@ export const useAuthContext = () => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-  const [authUser, setAuthUser] = useState(null);
-   
-  useEffect(() => {
-    const storedUser = localStorage.getItem("chat-user");
-    if (storedUser) {
-      setAuthUser(JSON.parse(storedUser));
+  const [authUser, setAuthUser] = useState(() => {
+  const storedUser = localStorage.getItem("chat-user");
+  if (storedUser) {
+    try {
+      return JSON.parse(storedUser);
+    } catch {
+      localStorage.removeItem("chat-user");
+      return null;
     }
-  }, []);
+  }
+  return null;
+});
+
 
  
 

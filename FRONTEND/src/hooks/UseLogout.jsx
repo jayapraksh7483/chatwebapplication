@@ -1,37 +1,39 @@
-import React ,{useState}from 'react'
-import toast from 'react-hot-toast';
-import { useAuthContext } from '../context/AuthContext.jsx';
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { useAuthContext } from "../context/AuthContext.jsx";
 
-const UseLogout = () => {
+const useLogout = () => {
+  const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useAuthContext();
 
-    const [loading, setLoading] = useState(false);
+  const logout = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/logout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // important for cookie based auth
+      });
 
-    const { setAuthUser } = useAuthContext();
+      const data = await res.json();
 
-    const logout = async () => {
-        setLoading(true);
-        try {
-            
-             const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/logout`, {
-                method: "POST",
- 
-                headers: {
-                    "Content-Type": "application/json",
-                }  })
-                
-                const data = await res.json();
-                if (data.error) {
-                    throw new Error(data.error);
-                }
-                localStorage.removeItem("chat-user");
-                setAuthUser(null);
-        } catch (error) {
-            toast.error("Logout failed", error);
-        } finally {
-            setLoading(false);
-        }
-    };
-    return { loading, logout }
-}
+      if (data.error) {
+        throw new Error(data.error);
+      }
 
-export default UseLogout
+      localStorage.removeItem("chat-user");
+      setAuthUser(null);
+      toast.success("Logout successful");
+    } catch (error) {
+      toast.error(error.message || "Logout failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { loading, logout };
+};
+
+export default useLogout;

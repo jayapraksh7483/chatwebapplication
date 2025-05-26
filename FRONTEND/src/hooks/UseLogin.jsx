@@ -19,16 +19,16 @@ const useLogin = () => {
         headers: {
           "Content-Type": "application/json",
         },
-         credentials: "include", // important if using cookies for auth
+        credentials: "include", // important if using cookies for auth
         body: JSON.stringify({ username, password }),
-        
       });
 
-      const data = await res.json();
-
-      if (data.error) {
-        throw new Error(data.error);
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Login failed");
       }
+
+      const data = await res.json();
 
       // Save user to localStorage and context
       localStorage.setItem("chat-user", JSON.stringify(data));
@@ -38,6 +38,7 @@ const useLogin = () => {
       return true;
     } catch (error) {
       toast.error(error.message || "Login failed");
+      setAuthUser(null); // clear user on failure (optional)
       return false;
     } finally {
       setLoading(false);

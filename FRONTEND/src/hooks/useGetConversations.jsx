@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';  // removed unused 'use'
+import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 
 const useGetConversations = () => {
@@ -7,16 +7,15 @@ const useGetConversations = () => {
   const { authUser } = useAuthContext();
 
   useEffect(() => {
-    const getConversations = async () => {
-      
+    if (!authUser) return; // Only fetch if logged in
 
+    const getConversations = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`
-        ,  {  method: "GET",
-          credentials: "include"
-        }
-        );
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`, {
+          method: "GET",
+          credentials: "include",
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -32,7 +31,7 @@ const useGetConversations = () => {
     };
 
     getConversations();
-  }, [authUser]);  // added authUser as dependency to reload when user changes
+  }, [authUser]);
 
   return { loading, conversations };
 };

@@ -1,37 +1,55 @@
-import { useEffect, useState, } from "react";
+import { useEffect, useState } from "react";
 import useConversationStore from "../zustand/useConversations";
 import toast from "react-hot-toast";
 
-
 const useGetMessages = () => {
- const [loading, setLoading] = useState(false); 
-  const {messages ,setMessages, selectedConversation} = useConversationStore();
-
+  const [loading, setLoading] = useState(false);
+  const { messages, setMessages, selectedConversation } = useConversationStore();
 
   useEffect(() => {
+    let isMounted = true;
+
     const getMessages = async () => {
       setLoading(true);
-      try { 
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/messages/${selectedConversation._id}`,{
-          method: "GET",
-       credentials: "include",   
-        })          
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_BASE_URL}/api/messages/${selectedConversation._id}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
         const data = await response.json();
- 
-        setMessages(data);
-      }
-      catch (error) {
-       toast.error(error.message);
+
+        if (isMounted) {
+          setMessages(data);
+        }
+      } catch (error) {
+        if (isMounted) {
+          toast.error(error.message);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
-    if (selectedConversation?._id) getMessages();
-  }, [selectedConversation?._id,setMessages]);
+    if (selectedConversation?._id) {
+      getMessages();
+    }
 
-  return{ messages,loading}
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedConversation?._id, setMessages]);
 
-}
+  return { messages, loading };
+};
+
 export default useGetMessages;
