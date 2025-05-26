@@ -15,6 +15,7 @@ export default defineConfig({
       },
     },
   },
-   
+  preview: {
+    allowedHosts: ['chatwebapplication-6.onrender.com'],
+  },
 });
-
