@@ -39,13 +39,13 @@ export const SocketContextProvider = ({ children }) => {
                 setOnlineUsers(users);
             });
         
-            return ()=>{if(socket) {setSocket.close();}}
+            return ()=>setSocket.disconnect();
           
         }
         else{
 
               if(socket){
-                socket.close();
+                socket.disconnect();
                 setSocket(null);
               }
 
