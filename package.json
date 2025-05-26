@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
       "start": "node backend/server.js",
-      "build":"npm install && vite build"
+       "build": "cd frontend && npm install && npm run build"
+
  
     
   },
