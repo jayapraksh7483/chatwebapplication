@@ -7,7 +7,7 @@ import authRoutes from "./routes/authroute.js";
 import messageRoutes from "./routes/messageroutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import path from "path";
-import { fileURLToPath } from "url";
+ 
 
 import connectToMongoDB from "./db/connectdb.js";
 import { app, server } from "./socket/socket.js";
@@ -16,8 +16,8 @@ dotenv.config();
  
  
  
- const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+  
+const __dirname = path.resolve();
  
 
  
@@ -39,7 +39,7 @@ app.use("/api/users", userRoutes);
 
  
 
-app.use(express.static(path.join(__dirname, "frontend","dist")));
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
