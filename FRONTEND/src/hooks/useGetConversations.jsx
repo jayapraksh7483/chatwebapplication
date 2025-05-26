@@ -13,7 +13,9 @@ const useGetConversations = () => {
       setLoading(true);
       try {
         const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`
-        ,  {credentials: "include"}
+        ,  {  method: "GET",
+          credentials: "include"
+        }
         );
 
         if (!response.ok) {
