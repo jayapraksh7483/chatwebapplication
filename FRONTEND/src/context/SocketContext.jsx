@@ -23,7 +23,7 @@ export const SocketContextProvider = ({ children }) => {
     useEffect(() => {
           
         if(authUser){
-            const socket = io("http://localhost:5000",{
+            const socket = io("https://chatwebapplication-7.onrender.com",{
                query:{
                     userId: authUser._id
                 }   
@@ -39,7 +39,9 @@ export const SocketContextProvider = ({ children }) => {
                 setOnlineUsers(users);
             });
         
-            return ()=>setSocket.disconnect();
+            return ()=>{setSocket.disconnect();
+                 setSocket(null);
+            }
           
         }
         else{
