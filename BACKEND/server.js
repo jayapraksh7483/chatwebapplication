@@ -6,7 +6,7 @@ import cors from "cors";
 import authRoutes from "./routes/authroute.js";
 import messageRoutes from "./routes/messageroutes.js";
 import userRoutes from "./routes/userRoutes.js";
-import path from "path";
+ 
  
 
 import connectToMongoDB from "./db/connectdb.js";
