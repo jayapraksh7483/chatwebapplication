@@ -20,38 +20,34 @@ export const SocketContextProvider = ({ children }) => {
     const [onlineUsers, setOnlineUsers] = useState([]);
       const {authUser} = useAuthContext();
 
-    useEffect(() => {
-          
-        if(authUser){
-            const socket = io("https://chatwebapplication-7.onrender.com",{
-               query:{
-                    userId: authUser._id
-                }   
+   useEffect(() => {
+  let newSocket;
 
+  if (authUser) {
+    newSocket = io("https://chatwebapplication-7.onrender.com", {
+      query: {
+        userId: authUser._id,
+      },
+      withCredentials: true, // important for cookies/auth if you're using them
+      transports: ["websocket", "polling"], // avoid transport fallback issues
+    });
 
-            });
+    setSocket(newSocket);
 
- 
-            setSocket(socket);
+    newSocket.on("getOnlineUsers", (users) => {
+      setOnlineUsers(users);
+    });
+  }
 
+  // Cleanup when authUser changes or component unmounts
+  return () => {
+    if (newSocket) {
+      newSocket.disconnect(); // or newSocket.close();
+    }
+    setSocket(null); // reset socket in state
+  };
+}, [authUser]);
 
-            socket.on("getOnlineUsers", (users) => {
-                setOnlineUsers(users);
-            });
-        
-            return ()=>{setSocket.close();
-            }
-          
-        }
-        else{
-
-              if(socket){
-                socket.close();
-                setSocket(null);
-              }
-
-        }
-    },[authUser]);
   return (
     <SocketContext.Provider value={{socket,onlineUsers}}>
       {children}
