@@ -14,20 +14,10 @@ dotenv.config();
  
  
 
-const allowedOrigins = [
-  'http://localhost:5174',
-  'https://chatwebapplication-6.onrender.com'
-];
-
+const cors = require('cors');
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  credentials: true
+  origin: 'https://chatwebapplication-6.onrender.com', // frontend origin
+  credentials: true, // if cookies/auth headers are needed
 }));
 
  
