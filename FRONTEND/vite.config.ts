@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [tailwindcss()],
+  base: '/',
   server: {
     port: 5173,
     proxy: {
@@ -14,8 +15,6 @@ export default defineConfig({
       },
     },
   },
-  preview: {
-    allowedHosts: ['chatwebapplication-7.onrender.com','chatwebapplication-6.onrender.com'], // Add your backend host here
-  },
+   
 });
 
