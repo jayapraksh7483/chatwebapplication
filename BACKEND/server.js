@@ -2,7 +2,7 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-const cors = require('cors');
+import cors from "cors";
 import authRoutes from "./routes/authroute.js";
 import messageRoutes from "./routes/messageroutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -12,10 +12,7 @@ import { app, server } from "./socket/socket.js";
 
 dotenv.config();
  
-app.use(cors({
-  origin: 'https://chatwebapplication-6.onrender.com', // frontend domain
-  credentials: true
-}));
+ 
 
 const allowedOrigins = [
   'http://localhost:5174',
