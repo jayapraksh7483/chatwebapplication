@@ -20,8 +20,9 @@ const useSendMessage = () => {
                     
                    
                 },
+                              credentials: 'include', 
                 body: JSON.stringify({message}),
-                credentials: 'include', 
+   
 });
 
             const data = await response.json();

@@ -25,6 +25,7 @@ export const SocketContextProvider = ({ children }) => {
 
   if (authUser) {
     newSocket = io("https://chatwebapplication-7.onrender.com", {
+        withCredentials: true,
       query: {
         userId: authUser._id,
       },
