@@ -24,7 +24,7 @@ app.use(express.json()); // to parse the incoming requests with JSON payloads (f
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ['https://chatwebapplicationz58t.vercel.app'], // frontendurl
+  origin: ['https://chatwebapplication-9p5l.vercel.app/'], // frontendurl
   credentials: true, // if cookies/auth headers are needed
 }));
 
