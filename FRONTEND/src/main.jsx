@@ -7,15 +7,13 @@ import { AuthContextProvider } from './context/AuthContext.jsx';
 import { SocketContextProvider } from './context/SocketContext.jsx';
 
 createRoot(document.getElementById('root')).render(
-
-  <BrowserRouter>
-    <SocketContextProvider>
+ 
+    <BrowserRouter>
       <AuthContextProvider>
-
-        <App />
+         <SocketContextProvider>
+          <App />
+         </SocketContextProvider>
       </AuthContextProvider>
-    </SocketContextProvider>
-
-  </BrowserRouter>
-
+    </BrowserRouter>
+  
 )
