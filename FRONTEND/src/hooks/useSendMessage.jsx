@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import useConversationStore from "../zustand/useConversations";
 import toast from "react-hot-toast";
@@ -5,19 +6,19 @@ import { useAuthContext } from "../context/AuthContext";
 
 const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
-  const { messages, setMessages, selectedConversation } = useConversationStore();
+  const { messages, setMessages, selectedConversation } = useConversationStore();        
     const { authUser } = useAuthContext();
-
+  
  
 
   const sendMessage = async (message) => {
     if (!selectedConversation?._id) {
-      toast.error("No conversation selected");
+      toast.error("No conversation selected");             
       return;
     }
     
     setLoading(true);
- 
+                                 
  if (!authUser?.token) return;
  
     
