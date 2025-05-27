@@ -37,6 +37,7 @@ export const signup = async (req, res) => {
       fullname: newUser.fullname,
       username: newUser.username,
       profilePic: newUser.profilePic,
+      token: jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: "15d" })
     });
   } catch (error) {
     console.log("Error in signup controller:", error.message);
@@ -64,7 +65,7 @@ export const signup = async (req, res) => {
       fullname: user.fullname,
       username: user.username,
       profilePic: user.profilePic,
-      token: jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: "15d" })
+      token: jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "15d" })
     });
   } catch (error) {
     console.log("Error in Login controller:", error.message);
