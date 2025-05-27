@@ -12,10 +12,7 @@ const useGetConversations = () => {
       try {
         const response = await fetch( "https://chatwebapplication-7.onrender.com/api/users", {
           method: "GET",
-           headers: {
-     
-    "Content-Type": "application/json"
-  },
+  
           credentials: "include",
         });
 

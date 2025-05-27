@@ -17,10 +17,7 @@ const useGetMessages = () => {
         const response = await fetch("https://chatwebapplication-7.onrender.com/api/messages/${selectedConversation._id}",
           {
             method: "GET",
-             headers: {
  
-    "Content-Type": "application/json"
-  },
             credentials: "include",
           }
         );
