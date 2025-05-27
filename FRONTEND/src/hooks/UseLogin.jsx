@@ -33,7 +33,7 @@ const useLogin = () => {
       // Save user to localStorage and context
       localStorage.setItem("chat-user", JSON.stringify(data));
  
-      setAuthUser(data,token);
+      setAuthUser(data);
       toast.success("Login successful");
 
       return true;
