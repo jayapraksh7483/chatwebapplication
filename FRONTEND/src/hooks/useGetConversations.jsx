@@ -6,22 +6,14 @@ const useGetConversations = () => {
   const [conversations, setConversations] = useState([]);
   const { authUser } = useAuthContext();
   useEffect(() => {
-    if (!authUser) return; // Only fetch if logged in
-
-    // Extract token from authUser - adjust depending on your authUser shape
-    const token = authUser.token || (authUser?.user?.token) || null;
-
-    if (!token) {
-      console.error("No token found in authUser");
-      return;
-    }
+ 
     const getConversations = async () => {
       setLoading(true);
       try {
         const response = await fetch( "https://chatwebapplication-7.onrender.com/api/users", {
           method: "GET",
            headers: {
-    "Authorization": `Bearer ${token}`,
+     
     "Content-Type": "application/json"
   },
           credentials: "include",

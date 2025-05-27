@@ -9,16 +9,8 @@ const useGetMessages = () => {
  
 
     useEffect(() => {
-    if (!authUser) return; // Only fetch if logged in
-
-    // Extract token from authUser - adjust depending on your authUser shape
-    const token = authUser.token || (authUser?.user?.token) || null;
-
-    if (!token) {
-      console.error("No token found in authUser");
-      return;
-    }
-
+    
+  
     const getMessages = async () => {
       setLoading(true);
       try {
@@ -26,7 +18,7 @@ const useGetMessages = () => {
           {
             method: "GET",
              headers: {
-    "Authorization": `Bearer ${token}`,
+ 
     "Content-Type": "application/json"
   },
             credentials: "include",

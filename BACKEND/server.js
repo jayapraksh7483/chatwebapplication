@@ -28,6 +28,8 @@ app.use(cors({
   credentials: true, // if cookies/auth headers are needed
 }));
 
+app.options("*", cors());
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
