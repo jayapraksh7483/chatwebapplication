@@ -15,6 +15,10 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     let newSocket;
+      if (!authUser || !authUser._id) {
+    console.warn("No authUser for socket connection");
+    return;
+  }
 
     if (authUser) {
       newSocket = io("https://chatwebapplication-7.onrender.com", {
