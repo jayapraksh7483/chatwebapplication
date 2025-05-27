@@ -17,7 +17,7 @@ export const SocketContextProvider = ({ children }) => {
     let newSocket;
 
     if (authUser) {
-      newSocket = io("https://chatwebapplication-1v3g.vercel.app/", {
+      newSocket = io("https://chatwebapplication-7.onrender.com", {
         withCredentials: true,
         query: {
           userId: authUser._id,

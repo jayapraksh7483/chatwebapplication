@@ -18,7 +18,7 @@ const useGetConversations = () => {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`, {
+        const response = await fetch( "https://chatwebapplication-7.onrender.com/api/users", {
           method: "GET",
            headers: {
     "Authorization": `Bearer ${token}`,

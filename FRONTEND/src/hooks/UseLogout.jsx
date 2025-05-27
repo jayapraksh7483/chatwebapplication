@@ -9,7 +9,7 @@ const useLogout = () => {
   const logout = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/logout`, {
+      const res = await fetch( "https://chatwebapplication-7.onrender.com/api/auth/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
