@@ -18,9 +18,7 @@ const useGetMessages = () => {
           {
             method: "GET",
             credentials: "include",
-               headers: { 
-          Authorization: `Bearer ${authUser?.token}` // 🔑 Attach token
-        }
+          
           }
         );
 

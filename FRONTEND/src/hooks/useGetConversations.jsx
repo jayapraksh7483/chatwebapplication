@@ -13,9 +13,7 @@ const useGetConversations = () => {
         const response = await fetch( "https://chatwebapplication-7.onrender.com/api/users", {
           method: "GET",
           credentials: "include",
-             headers: { 
-          Authorization: `Bearer ${authUser?.token}` // 🔑 Attach token
-        }
+    
         });
 
         if (!response.ok) {
