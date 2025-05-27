@@ -1,13 +1,19 @@
-import { createContext, useContext, useState } from "react";
+// context/AuthContext.jsx
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
-export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthProvider = ({ children }) => {
-  const [authUser, setAuthUser] = useState(() => {
-    const user = localStorage.getItem("chat-user");
-    return user ? JSON.parse(user) : null;
-  });
+export const AuthContextProvider = ({ children }) => {
+  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem("chat-user")) || null);
+
+  useEffect(() => {
+    // Optional: Sync with localStorage
+    if (authUser) {
+      localStorage.setItem("chat-user", JSON.stringify(authUser));
+    } else {
+      localStorage.removeItem("chat-user");
+    }
+  }, [authUser]);
 
   return (
     <AuthContext.Provider value={{ authUser, setAuthUser }}>
@@ -16,4 +22,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
- 
+// ✅ Use this to access authUser and setAuthUser
+export const useAuthContext = () => useContext(AuthContext);
+
