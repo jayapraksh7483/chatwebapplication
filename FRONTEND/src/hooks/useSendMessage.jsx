@@ -18,10 +18,10 @@ const useSendMessage = () => {
     
     setLoading(true);
  
-
+ if (!authUser?.token) return;
     
     try {
-      const response = await fetch(`https://chatwebapplication-7.onrender.com/api/messages/send/${selectedConversation._id}`
+      const response = await fetch(`https://chatwebapplication-7.onrender.com/api/messages/send/${selectedConversation._id}`,
         {
           method: "POST",
           headers: {

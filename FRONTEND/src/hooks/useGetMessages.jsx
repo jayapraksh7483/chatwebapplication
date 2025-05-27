@@ -12,6 +12,7 @@ const useGetMessages = () => {
 
     useEffect(() => {
     
+       if (!authUser?.token) return;
   
     const getMessages = async () => {
       setLoading(true);
