@@ -13,10 +13,7 @@ const useGetMessages = () => {
     useEffect(() => {
     
        if (!authUser?.token) return;
-       if (!authUser) {
-  console.warn("authUser is undefined — waiting...");
-  return;
-}
+       
   
     const getMessages = async () => {
       setLoading(true);

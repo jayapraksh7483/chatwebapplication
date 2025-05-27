@@ -1,4 +1,4 @@
-import react,{useState} from "react";
+import { useState } from "react";
 import useConversationStore from "../zustand/useConversations";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
@@ -19,10 +19,7 @@ const useSendMessage = () => {
     setLoading(true);
  
  if (!authUser?.token) return;
- if (!authUser) {
-  console.warn("authUser is undefined — waiting...");
-  return;
-}
+ 
     
     try {
       const response = await fetch(`https://chatwebapplication-7.onrender.com/api/messages/send/${selectedConversation._id}`,
