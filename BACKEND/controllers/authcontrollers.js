@@ -30,7 +30,7 @@ export const signup = async (req, res) => {
     });
 
     await newUser.save(); // Save first
-   // then generate token
+    generateTokenandSetCookie(newUser._id, res); // then generate token
 
     res.status(201).json({
       _id: newUser._id,
@@ -56,7 +56,8 @@ export const signup = async (req, res) => {
     if (!user || !isPasswordCorrect) {
       return res.status(400).json({ error: "Invalid username or password" });
     }
- 
+
+    generateTokenandSetCookie(user._id, res);
 
     res.status(200).json({
       _id: user._id,

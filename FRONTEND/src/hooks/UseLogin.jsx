@@ -7,19 +7,18 @@ const useLogin = () => {
   const { setAuthUser } = useAuthContext();
 
   const login = async (username, password) => {
-    // Validate input fields
-    const isValid = validateLoginInputs({ username, password });
-    if (!isValid) return false;
+  
 
     setLoading(true);
 
     try {
       const res = await fetch("https://chatwebapplication-7.onrender.com/api/auth/login", {
         method: "POST",
+        credentials: "include", // important if using cookies for auth
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // important if using cookies for auth
+    // important if using cookies for auth
         body: JSON.stringify({ username, password }),
       });
 

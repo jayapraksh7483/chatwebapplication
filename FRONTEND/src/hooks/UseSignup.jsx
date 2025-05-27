@@ -15,10 +15,11 @@ const UseSignup = () => {
     try {
       const res = await fetch( "https://chatwebapplication-7.onrender.com/api/auth/signup", {
         method: "POST",
+             credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+    
         body: JSON.stringify({
           fullname,
           username,
