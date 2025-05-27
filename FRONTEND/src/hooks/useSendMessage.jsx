@@ -25,6 +25,7 @@ const useSendMessage = () => {
           headers: {
               
             "Content-Type": "application/json",
+             Authorization: `Bearer ${authUser?.token}` 
           },
           credentials: "include",
           body: JSON.stringify({ message }),

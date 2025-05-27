@@ -17,38 +17,32 @@ const useGetMessages = () => {
         const response = await fetch("https://chatwebapplication-7.onrender.com/api/messages/${selectedConversation._id}",
           {
             method: "GET",
- 
             credentials: "include",
+               headers: { 
+          Authorization: `Bearer ${authUser?.token}` // 🔑 Attach token
+        }
           }
         );
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
 
         const data = await response.json();
+        if (data.error) throw new Error(data.error);
+				setMessages(data);
 
-        if (isMounted) {
-          setMessages(data);
-        }
+       
       } catch (error) {
-        if (isMounted) {
-          toast.error(error.message);
-        }
+   
+ 
       } finally {
-        if (isMounted) {
+ 
           setLoading(false);
-        }
       }
     };
 
     if (selectedConversation?._id) {
       getMessages();
     }
-
-    return () => {
-      isMounted = false;
-    };
+ 
   }, [selectedConversation?._id, setMessages]);
 
   return { messages, loading };
