@@ -7,7 +7,7 @@ const  generateTokenandSetCookie= (userId,res)=>{
  console.log("Generated token:", token); // ✅ Debug log
 res.cookie("jwt", token, {
   httpOnly: true,
-  secure:process.env.NODE_ENV === 'production',
+  secure:true,
   sameSite: "None", // ✅ for cross-site cookies (e.g., Netlify + Render)
   maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
 });
