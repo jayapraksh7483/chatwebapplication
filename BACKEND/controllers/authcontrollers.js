@@ -64,6 +64,7 @@ export const signup = async (req, res) => {
       fullname: user.fullname,
       username: user.username,
       profilePic: user.profilePic,
+      token: jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: "15d" })
     });
   } catch (error) {
     console.log("Error in Login controller:", error.message);

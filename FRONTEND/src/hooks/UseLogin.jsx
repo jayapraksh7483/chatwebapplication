@@ -30,7 +30,8 @@ const useLogin = () => {
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await res.json();
+      const data = await res.json();console.log("JWT token from response:", data.token);
+
 
       if (!res.ok) {
         throw new Error(data.error || data.message || "Login failed");
