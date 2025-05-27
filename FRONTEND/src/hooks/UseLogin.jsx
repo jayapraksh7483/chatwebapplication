@@ -7,7 +7,16 @@ const useLogin = () => {
   const { setAuthUser } = useAuthContext();
 
   const login = async (username, password) => {
-  
+    // ✅ Input validation
+    if (!username || !password) {
+      toast.error("Please fill all the fields");
+      return false;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return false;
+    }
 
     setLoading(true);
 
@@ -18,27 +27,29 @@ const useLogin = () => {
         headers: {
           "Content-Type": "application/json",
         },
-    // important if using cookies for auth
         body: JSON.stringify({ username, password }),
       });
 
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Login failed");
-      }
-
       const data = await res.json();
 
-      // Save user to localStorage and context
+      if (!res.ok) {
+        throw new Error(data.error || data.message || "Login failed");
+      }
+
+      // ✅ Ensure token exists
+      if (!data.token) {
+        throw new Error("No token received. Login failed.");
+      }
+
+      // ✅ Save user to localStorage and auth context
       localStorage.setItem("chat-user", JSON.stringify(data));
- 
       setAuthUser(data);
       toast.success("Login successful");
 
       return true;
     } catch (error) {
       toast.error(error.message || "Login failed");
-      setAuthUser(null); // clear user on failure (optional)
+      setAuthUser(null); // optional
       return false;
     } finally {
       setLoading(false);
@@ -49,18 +60,3 @@ const useLogin = () => {
 };
 
 export default useLogin;
-
-// ✅ Input validation function
-function validateLoginInputs({ username, password }) {
-  if (!username || !password) {
-    toast.error("Please fill all the fields");
-    return false;
-  }
-
-  if (password.length < 6) {
-    toast.error("Password must be at least 6 characters long");
-    return false;
-  }
-
-  return true;
-}
