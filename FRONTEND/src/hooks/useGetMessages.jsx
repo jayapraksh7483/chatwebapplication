@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useConversationStore from "../zustand/useConversations";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../context/AuthContext.jsx";
 
 const useGetMessages = () => {
   const [loading, setLoading] = useState(false);
