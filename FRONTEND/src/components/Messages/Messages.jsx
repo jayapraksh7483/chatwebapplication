@@ -1,5 +1,4 @@
-import React from "react";
-import { useRef, useEffect } from 'react';
+ import React, { useRef, useEffect } from 'react';
 import useGetMessages from '../../hooks/useGetMessages';
 import MessageSkeleton from '../../skeletons/MessageSkeleton';
 import Message from './Message';
