@@ -15,7 +15,7 @@ import { app, server } from "./socket/socket.js";
 dotenv.config();
   
  app.use(cors({
-  origin: 'https://chatwebapplication-9p5l.vercel.app', // frontendurl
+  origin: 'https://chatwebapplication-6.onrender.com', // frontendurl
   credentials: true, // if cookies/auth headers are needed
 }));
 
