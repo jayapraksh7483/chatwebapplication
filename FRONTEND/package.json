@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
+    "@vitejs/plugin-react": "^4.5.0",
     "backend": "file:..",
     "daisyui": "^5.0.37",
     "react": "^19.1.0",
