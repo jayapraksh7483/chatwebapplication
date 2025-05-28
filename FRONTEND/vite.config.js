@@ -1,7 +1,7 @@
 import React from "react";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-  x
+  
 
 export default defineConfig({
   plugins: [react()],
@@ -17,6 +17,6 @@ export default defineConfig({
     },
   },
   preview: {
-    allowedHosts: ['chatwebapplication-7.onrender.com',"https://chatwebapplication-6.onrender.com"],
+    allowedHosts: ['chatwebapplication-7.onrender.com',"https://chatwebapplication-9p5l.vercel.app"],
   },
 });
