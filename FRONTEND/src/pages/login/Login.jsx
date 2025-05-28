@@ -1,5 +1,5 @@
- 
-import React,{useState} from 'react'
+ import React from 'react';
+import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import UseLogin from '../../hooks/UseLogin.jsx';
 import { useAuthContext } from '../../context/AuthContext.jsx';

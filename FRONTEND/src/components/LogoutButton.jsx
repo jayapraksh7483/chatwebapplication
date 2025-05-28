@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React from 'react'
 import {BiLogOut} from 'react-icons/bi'
 import useLogout  from '../hooks/UseLogout'
 import { useAuthContext } from '../context/AuthContext'
