@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+window.React = React;
 import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import "./index.css";
