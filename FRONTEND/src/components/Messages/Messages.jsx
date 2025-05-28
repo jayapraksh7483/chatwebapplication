@@ -3,9 +3,12 @@ import useGetMessages from '../../hooks/useGetMessages';
 import MessageSkeleton from '../../skeletons/MessageSkeleton';
 import Message from './Message';
 import useListenMessages from '../../hooks/useListenMessages';
-
+import useConversationStore from '../../zustand/useConversations';
 const Messages = () => {
-  const { messages, loading } = useGetMessages();
+
+  const { messages } = useConversationStore(); // ✅ use Zustand's messages
+  
+  const { loading } = useGetMessages();
   useListenMessages();
   const lastMessageRef = useRef();
 
