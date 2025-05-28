@@ -7,16 +7,22 @@ const useListenMessages = () => {
     const{socket}=useSocketContext();
     const {messages ,setMessages}=useConversationStore();
 
-    useEffect(()=>{
-        socket?.on("newMessage",(newMessage)=>{
-            newMessage.shouldShake =true;
-            const sound =new Audio(notificationSound)
-            sound.play();
-            setMessages([...messages,newMessage])
-        })
-        return ()=> socket?.off("newMessage")
-    },[socket,setMessages ,messages])
-  
+  useEffect(() => {
+  if (!socket) return;
+
+  const handleNewMessage = (newMessage) => {
+    newMessage.shouldShake = true;
+    const sound = new Audio(notificationSound);
+    sound.play();
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+  };
+
+  socket.on("newMessage", handleNewMessage);
+
+  return () => {
+    socket.off("newMessage", handleNewMessage);
+  };
+}, [socket, setMessages]);
 }
 
 export default useListenMessages

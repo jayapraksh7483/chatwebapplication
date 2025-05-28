@@ -30,7 +30,7 @@ const handleSubmit = (e) => {
   
   return (
     <form onSubmit={handleSubmit} action="" className='flex items-center gap-2'>
-        <input type="text" placeholder='Search' className='input input-borded rounded-full text-white'
+        <input type="text" placeholder='Search' className='input input-borded rounded-full text-black'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
