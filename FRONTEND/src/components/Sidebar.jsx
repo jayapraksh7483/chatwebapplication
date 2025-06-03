@@ -1,4 +1,4 @@
-// Sidebar.jsx
+// src/components/Sidebar.jsx
 import React from 'react';
 import SearchInput from './SearchInput';
 import Conversations from './Conversations';
@@ -6,9 +6,9 @@ import LogoutButton from './LogoutButton';
 
 const Sidebar = () => {
   return (
-    <div className="border-r border-slate-500 p-4 flex flex-col w-full sm:w-1/3 md:w-1/4 lg:w-1/5 bg-gray-800 sm:border-r-0 sm:border-b sm:border-b-slate-500">
+    <div className="flex flex-col w-[40%] min-w-[120px] max-w-[200px] sm:w-[30%] md:w-[25%] lg:w-[20%] bg-gray-800 border-r border-slate-500 p-2 sm:p-4 overflow-y-auto">
       <SearchInput />
-      <div className="divider px-3"></div>
+      <div className="divider px-2 sm:px-3"></div>
       <Conversations />
       <LogoutButton />
     </div>

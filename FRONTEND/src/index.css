@@ -13,7 +13,7 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px; /* Smaller for mobile */
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -29,6 +29,17 @@ body {
   background-color: #242424;
 }
 
+/* Disable custom scrollbar for touch devices */
+@media (hover: none) {
+  ::-webkit-scrollbar {
+    width: auto; /* Let browser handle scrollbar */
+  }
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    background: transparent; /* Hide custom styles */
+  }
+}
+
 /* Green dot for online avatars */
 .avatar {
   position: relative;
@@ -40,10 +51,10 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 8px; /* Smaller for mobile */
+  width: 8px;
   height: 8px;
-  background-color: #22c55e; /* Tailwind green-500 */
-  border: 1px solid white; /* Thinner border */
+  background-color: #22c55e;
+  border: 1px solid white;
   border-radius: 9999px;
 }
 
@@ -56,45 +67,58 @@ body {
 }
 
 @keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%,
-  60% {
-    transform: translate3d(4px, 0, 0);
-  }
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
 html, body, #root {
+  height: 100%;
   overflow: auto;
 }
 
 /* Mobile-specific adjustments */
 @media (max-width: 640px) {
   body {
-    font-size: 14px; /* Slightly smaller base font */
+    font-size: 14px;
   }
-
   .avatar.online::after {
     width: 6px;
     height: 6px;
     border-width: 1px;
   }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 12px; /* Smaller base font */
+  }
+
+  .avatar.online::after {
+    width: 5px;
+    height: 5px;
+    border-width: 1px;
+  }
 
   ::-webkit-scrollbar {
-    width: 4px; /* Even smaller for touch devices */
+    width: 3px; /* Even slimmer for mobile */
+  }
+}
+
+/* index.css */
+@media (max-width: 400px) {
+  .flex-row {
+    flex-direction: column;
+  }
+  .flex-row > div:first-child {
+    width: 100%;
+    max-width: none;
+    border-right: none;
+    border-bottom: 1px solid #4b5563; /* Tailwind slate-500 */
+  }
+  .flex-row > div:last-child {
+    width: 100%;
+    min-width: 0;
   }
 }
