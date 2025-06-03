@@ -1,7 +1,7 @@
 // Homepage.jsx
 import React from 'react';
 import Sidebar from '../../components/Sidebar';
-import MessagesContainer from '../../components/MessagesContainer';
+import MessagesContainer from '../../components/Messages/MessagesContainer';
 
 const Homepage = () => {
   return (
